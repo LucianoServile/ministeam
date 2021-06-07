@@ -1,9 +1,20 @@
 package com.example.Model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Juego")
 public class Juego {
 	
+	@Id
 	private int id;
+	@Column(name="nombre",length=50)
 	private String nombre;
+	@Column
 	private int precio;
 	
 	public int getId() {

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Ministeam-ADJ</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h2>Bienvenido al administrador de juegos de ministeam!</h2>
+    
+     <h3 style="text-align: center;">Juegos que estan en la base de datos</h3>
+     
+     <table class="default">
+    	<th:block th:each="juegos :${juegos}">
+    	  <tr>
+		    <td>Id</td>
+		    <td>Nombre</td>
+		    <td>Precio</td>
+		  </tr>
+		  <tr>
+		    <td th:text="${juegos.id}">...</td>
+		    <td th:text="${juegos.nombre}">...</td>
+		    <td th:text="${juegos.precio}">...</td>
+		    <td><button>Comprar</button></td>
+		  </tr>
+    	</th>
+	</table>
+	
+	 <h3 style="text-align: center;">Juegos que estan en la pagina</h3>
+     
+     <table class="default">
+    	<th:block th:each="juegos :${juegos}">
+    	  <tr>
+		    <td>Id</td>
+		    <td>Nombre</td>
+		    <td>Precio</td>
+		  </tr>
+		  <tr>
+		    <td th:text="${juegos.id}">...</td>
+		    <td th:text="${juegos.nombre}">...</td>
+		    <td th:text="${juegos.precio}">...</td>
+		    <td><button>Comprar</button></td>
+		  </tr>
+    	</th>
+	</table>
+	
+	<h3 style="text-align: center;">Agregar juego</h3>
+	
+	<form action="#" th:action="@{/addJuegos}" th:object="${juegos}" method="POST">
+	  <label for="fname">Nombre de juego:</label><br>
+	  <input type="text" placeholder="Nombre" th:field="*{nombre}"><br>
+	  <label for="lname">Precio:</label><br>
+	  <input type="text" placeholder="Precio" th:field="*{precio}"><br><br>
+	  <input type="Agregar" value="Submit">
+	</form>
+	
+</body>
+</html>

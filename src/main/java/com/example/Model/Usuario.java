@@ -2,12 +2,20 @@ package com.example.Model;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
 	
+	@Id
 	private int id;
+	@Column
 	private String name;
+	@Column
 	private int saldo;
-	private List<Juego> listaDeJuegos;
+	
 	
 	public int getId() {
 		return id;
@@ -27,12 +35,7 @@ public class Usuario {
 	public void setSaldo(int saldo) {
 		this.saldo = saldo;
 	}
-	public List<Juego> getListaDeJuegos() {
-		return listaDeJuegos;
-	}
-	public void setListaDeJuegos(List<Juego> listaDeJuegos) {
-		this.listaDeJuegos = listaDeJuegos;
-	}
+
 
 	
 	

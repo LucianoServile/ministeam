@@ -3,8 +3,27 @@
 <head> 
     <title>Mini-Steam</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="ministeam.css">
 </head>
 <body>
-    <p>Bienvenido a ministeam, <span th:text=${nombre}> !</p>
+    <h2>Bienvenido a ministeam, <span th:text="${nombre}"></span>!</h2>
+     <h3>Juegos</h3>
+     
+     <table class="default" border="1">
+    	  <tr>
+		    <td>Id</td>
+		    <td>Nombre</td>
+		    <td>Precio</td>
+		  </tr>
+		  <th:block th:each="juegos :${juegos}">
+		  <tr>
+		    <td th:text="${juegos.id}">...</td>
+		    <td th:text="${juegos.nombre}">...</td>
+		    <td th:text="${juegos.precio}">...</td>
+		    <td><button>Comprar</button></td>
+		  </tr>
+    	</th>
+	</table>
+	
 </body>
 </html>
