@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>Ministeam.404</title> 
+    <title>listaDeUsuarios</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<p>ERROR 404</p>
-    <img src="../static/Img/404.png" alt="404" th:src="@{/Img/404.png}">
+     
+	<h1><span th:text="${usuario.nombre}"></span> - <span th:text="${usuario.apellido}"></span></h1>
+
+
+	
 </body>
 </html>
