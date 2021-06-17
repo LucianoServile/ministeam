@@ -3,55 +3,87 @@
 <head> 
     <title>Ministeam.ADJ</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/AdministracionDeJuegos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h2>Bienvenido al administrador de juegos de ministeam!</h2>
-    
-     <h3 style="text-align: center;">Juegos que estan en la base de datos</h3>
-     
-     <table class="default">
-    	<th:block th:each="juegos :${juegos}">
-    	  <tr>
-		    <td>Id</td>
-		    <td>Nombre</td>
-		    <td>Precio</td>
-		  </tr>
-		  <tr>
-		    <td th:text="${juegos.id}">...</td>
-		    <td th:text="${juegos.nombre}">...</td>
-		    <td th:text="${juegos.precio}">...</td>
-		    <td><button>Comprar</button></td>
-		  </tr>
-    	</th>
-	</table>
-	
-	 <h3 style="text-align: center;">Juegos que estan en la pagina</h3>
-     
-     <table class="default">
-    	<th:block th:each="juegos :${juegos}">
-    	  <tr>
-		    <td>Id</td>
-		    <td>Nombre</td>
-		    <td>Precio</td>
-		  </tr>
-		  <tr>
-		    <td th:text="${juegos.id}">...</td>
-		    <td th:text="${juegos.nombre}">...</td>
-		    <td th:text="${juegos.precio}">...</td>
-		    <td><button>Comprar</button></td>
-		  </tr>
-    	</th>
-	</table>
-	
-	<h3 style="text-align: center;">Agregar juego</h3>
-	
-	<form action="#" th:action="@{/addJuegos}" th:object="${juegos}" method="POST">
+
+	<div class="container">
+		<div class="row bienvenido">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<h2>Bienvenido al administrador de juegos de ministeam!</h2>
+			</div>
+			<div class="col-2"></div>
+		</div>
+		<hr>
+	    
+	    <div class="row titulo1">
+	    	<div class="col-2"></div>
+	    	<div class="col-8">
+	    		<h3 style="text-align: center;">Juegos que estan en la base de datos</h3>
+		    	<table class="default" border="1">
+			    	<th:block th:each="juegos :${juegos}">
+			    	  <tr>
+					    <td>Id</td>
+					    <td>Nombre</td>
+					    <td>Precio</td>
+					  </tr>
+					  <tr>
+					    <td th:text="${juegos.id}">...</td>
+					    <td th:text="${juegos.nombre}">...</td>
+					    <td th:text="${juegos.precio}">...</td>
+					    <td><button>Comprar</button></td>
+					  </tr>
+			    	</th>
+				</table>
+	    	</div>
+	    	<div class="col-2"></div>
+	    </div>
+
+	    <div class="row titulo2">
+	    	<div class="col-2"></div>
+	    	<div class="col-8">
+	    		<h3 style="text-align: center;">Juegos que estan en la pagina</h3>
+		    	<table class="default" border="1">
+			    	<th:block th:each="juegos :${juegos}">
+			    	  <tr>
+					    <td>Id</td>
+					    <td>Nombre</td>
+					    <td>Precio</td>
+					  </tr>
+					  <tr>
+					    <td th:text="${juegos.id}">...</td>
+					    <td th:text="${juegos.nombre}">...</td>
+					    <td th:text="${juegos.precio}">...</td>
+					    <td><button>Comprar</button></td>
+					  </tr>
+			    	</th>
+				</table>
+	    	</div>
+	    	<div class="col-2"></div>
+	    </div>
+	     
+		
+		
+		
+		<h3 style="text-align: center;">Agregar juego</h3>
+
+	</div>
+<!--	<form action="#" th:action="@{/addJuegos}" th:object="${juegos}" method="POST">
 	  <label for="fname">Nombre de juego:</label><br>
 	  <input type="text" placeholder="Nombre" th:field="*{nombre}"><br>
 	  <label for="lname">Precio:</label><br>
 	  <input type="text" placeholder="Precio" th:field="*{precio}"><br><br>
 	  <input type="Agregar" value="Submit">
 	</form>
+	-->
 	
+	<footer>
+		<p>@Ministeam2021</p>
+	</footer>
+
 </body>
 </html>

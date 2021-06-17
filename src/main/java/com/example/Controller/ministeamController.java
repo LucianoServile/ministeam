@@ -36,15 +36,14 @@ public class ministeamController {
 
 	@GetMapping("/AdministracionDeJuegos")
 	public String getAdministracionDeJuegos(Model model) {
-		
 		return "AdministracionDeJuegos";
 	}
 	
-	@PostMapping("/addJuegos")
-	public String agregarJuegoAlBaseDeDatos(Juego juego) {
-		juegoService.guardarJuego(juego);
-		return "redirect:/AdministracionDeJuegos";
-	}
+//	@PostMapping("/addJuegos")
+//	public String agregarJuegoAlBaseDeDatos(Juego juego) {
+//		//juegoService.guardarJuego(juego);
+//		return "redirect:/AdministracionDeJuegos";
+//	}
 
 	
 	@GetMapping("/ministeam")

@@ -1,7 +1,10 @@
 package com.example.Controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +18,6 @@ import com.example.Model.Usuario2;
 @RequestMapping("/example")
 public class Controller2 {
 	
-	
-	
 	@GetMapping("/hacerForma")
 	public String mostrarForma(Model model) {
 		model.addAttribute("usuario2", new Usuario2());
@@ -25,9 +26,15 @@ public class Controller2 {
 
 	
 	@PostMapping("/addUsuario")
-	public ModelAndView agregarUsuarios(@ModelAttribute("usuario2") Usuario2 usuario) {
+	public ModelAndView agregarUsuarios(@Valid @ModelAttribute("usuario2") Usuario2 usuario, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView("listaDeUsuarios");
-		mav.addObject("usuario", usuario);
+		if(bindingResult.hasErrors()) {
+			mav.setViewName("hacerForma");
+		}else {
+			mav.setViewName("listaDeUsuarios");
+			mav.addObject("usuario", usuario);
+		}
+		
 		return mav;
 	}
 }
