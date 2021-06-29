@@ -1,23 +1,26 @@
 package com.example.Model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-
-@Entity
-@Table(name="Juego")
-public class Juego {
+public class JuegoModel {
 	
-	@Id
-	@GeneratedValue
+
 	private int id;
-	@Column(name="nombre",length=50)
 	private String nombre;
-	@Column(name="precio")
 	private int precio;
+	
+	public JuegoModel() {
+		
+	}
+	
+	public JuegoModel(int id, String nombre, int precio) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+	}
 	
 	public int getId() {
 		return id;
@@ -37,7 +40,5 @@ public class Juego {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-	
-	
 
 }

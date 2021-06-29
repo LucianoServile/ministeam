@@ -3,6 +3,7 @@ package com.example.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,18 +19,22 @@ import com.example.Model.UsuarioCredencial;
 import com.example.Repository.IJuegosRepository;
 import com.example.Repository.IUsuarioRepository;
 import com.example.Service.JuegosService;
+import com.example.Service.UsuarioCredencialService;
+import com.example.Service.UsuarioServiceImpl;
 
 @Controller
 public class ministeamController {
 	
 	@Autowired
-	private IJuegosRepository repoJuegos;
-	
-	@Autowired
-	private IUsuarioRepository repoUsuario;
-	
-	@Autowired
 	private JuegosService juegoService;
+	
+	@Autowired
+	@Qualifier("UsuarioCredencialService")
+	private UsuarioCredencialService usuarioCredencialService;
+	
+	@Autowired
+	@Qualifier("UsuarioService")
+	private UsuarioServiceImpl usuarioService;
 	
 	@GetMapping("/")
 	public String get404() {
@@ -61,8 +66,29 @@ public class ministeamController {
 	}
 	
 	@GetMapping("/registrarse")
-	public String getRegistrar(Model model) {
+	public String getRegistrar(Model model,
+			@RequestParam(name="errorRegistrar", required=false) String error) {
+		model.addAttribute("errorRegistrar", error);
+		model.addAttribute("AgregarUsuario", new Usuario());
 		return "registrar";
+	}
+	
+	@GetMapping("/usuarioRegistrado")
+	public String usuarioRegistrado() {
+		return "usuarioRegistrado";
+	}
+	
+	@PostMapping("/addUser")
+	public String getAddUser(@ModelAttribute(name="AgregarUsuario") Usuario usuario, Model model) {
+		
+		if(null != usuarioService) {
+			model.addAttribute("result", 1);
+			usuarioService.addUsuario(usuario);
+		} else {
+			model.addAttribute("result", 0);
+		}
+		
+		return "redirect:/usuarioRegistrado";
 	}
 	
 	@GetMapping("/perfil")
